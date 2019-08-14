@@ -6,13 +6,14 @@ import { addFeature } from '../actions/actions.js';
 
 
 const AdditionalFeatures = props => {
+ 
   return (
     <div className="content">
       <h4>Additional Features</h4>
       {props.store.length ? (
         <ol type="1">
           {props.store.map(item => (
-            <AdditionalFeature key={item.id} feature={item} addFeature={addFeature}/>
+            <AdditionalFeature key={item.id} feature={item} addFeature={props.addFeature}/>
           ))}
         </ol>
       ) : (
@@ -23,7 +24,10 @@ const AdditionalFeatures = props => {
 };
 
 const mapStateToProps = state => {
+  console.log('additionalFeatures state', state);
   return {
+    additionalPrice: state.additionalPrice,
+    car: state.car,
     store: state.store
   };
 };
